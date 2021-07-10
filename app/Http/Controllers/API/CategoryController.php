@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['index']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +19,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data = Category::all();
+        $data = Category::with('produk')->get();
         return response()->json([
             'pesan' => 'Data Berhasil Ditemukan',
             'data' => $data

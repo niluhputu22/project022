@@ -16,7 +16,7 @@ class ProductController extends Controller
     public function index()
     {
        // return Product::all();
-       $data = Product::all();
+       $data = Product::with('jenis')->get();
        return response()->json([
            'pesan' => 'Data Berhasil Ditemukan',
            'data' => $data

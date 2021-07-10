@@ -11,4 +11,9 @@ class Category extends Model
     //jika tidak mau memasukkan timestamp
     public $timestamps = false;
     protected $fillable = ['name'];
+
+    public function produk()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

@@ -11,4 +11,9 @@ class Product extends Model
     //jika tidak mau memasukkan timestamp
     public $timestamps = false;
     protected $fillable = ['name', 'description', 'price', 'category_id'];
+
+    public function jenis()
+    {
+        return $this->belongsTo(Category::class,'category_id');
+    }
 }
